@@ -241,6 +241,7 @@ const parseEvents = async (semester: number, team: number) => {
             if (data[k].type == "VEVENT") {
               const event = data[k];
               event.title = event.summary;
+		const location = event.location || event.description;
 
               events.push({
                 start: moment(event.start)
@@ -250,7 +251,7 @@ const parseEvents = async (semester: number, team: number) => {
                   .tz("Europe/Copenhagen", true)
                   .toDate(),
                 description: event.description,
-                location: event.location,
+                location: location,
                 title: event.title,
                 semester: semester,
                 type: getTypeFromEvent(event),
