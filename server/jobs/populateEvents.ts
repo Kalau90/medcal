@@ -72,12 +72,13 @@ const calculateYear = () => {
 
 const getEventId = (event: Partial<Event>, semester: number) => {
   if (event.title.match(/F\d+:/i)) {
-    console.log("Trying to parse",event.title);
+    let title = event.title.replace("F9f4:", "F94:");
+    console.log("Trying to parse",title);
     return (
       calculateSeason() +
       calculateYear() +
       appendZero(semester.toString()) +
-      appendZero(event.title.split(/F(\d+):/)[1]) // Captures and selects the number after F
+      appendZero(title.split(/F(\d+):/)[1]) // Captures and selects the number after F
     );
   } else {
     return null;
