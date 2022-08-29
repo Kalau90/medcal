@@ -73,13 +73,18 @@ const calculateYear = () => {
 const getEventId = (event: Partial<Event>, semester: number) => {
   if (event.title.match(/F\d+:/i)) {
     let title = event.title.replace("F9f4:", "F94:");
-    console.log("Trying to parse",title);
-    return (
-      calculateSeason() +
-      calculateYear() +
-      appendZero(semester.toString()) +
-      appendZero(title.split(/F(\d+):/)[1]) // Captures and selects the number after F
-    );
+    const medcal_id = title.split(/F(\d+):/)[1];
+    if(medcal_id){
+      return (
+        calculateSeason() +
+        calculateYear() +
+        appendZero(semester.toString()) +
+        appendZero(medcal_id) // Captures and selects the number after F
+      );
+    }else{
+	console.log("ERROR parsing medcal_id on "+title;
+	return null;
+    }
   } else {
     return null;
   }
@@ -92,7 +97,6 @@ const getTypeFromEvent = (event: Partial<Event>) => {
 };
 
 const appendZero = (string: string) => {
-  console.log("STR",string);
   return string.length === 1 ? `0${string}` : string;
 };
 
