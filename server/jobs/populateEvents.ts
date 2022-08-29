@@ -72,6 +72,7 @@ const calculateYear = () => {
 
 const getEventId = (event: Partial<Event>, semester: number) => {
   if (event.title.match(/F\d+:/i)) {
+    console.log("Trying to parse",event.title);
     return (
       calculateSeason() +
       calculateYear() +
