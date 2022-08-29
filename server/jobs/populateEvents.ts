@@ -72,7 +72,7 @@ const calculateYear = () => {
 
 const getEventId = (event: Partial<Event>, semester: number) => {
   if (event.title.match(/F\d+:/i)) {
-    let title = event.title.replace("F9f4:", "F94:");
+    let title = event.title;//.replace("F9f4:", "F94:"); // quick fix!
     const medcal_id = title.split(/F(\d+):/)[1];
     if(medcal_id){
       return (
