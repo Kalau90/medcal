@@ -90,6 +90,7 @@ const getTypeFromEvent = (event: Partial<Event>) => {
 };
 
 const appendZero = (string: string) => {
+  console.log("STR",string);
   return string.length === 1 ? `0${string}` : string;
 };
 
