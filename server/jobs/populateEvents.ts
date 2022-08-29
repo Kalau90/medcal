@@ -82,7 +82,7 @@ const getEventId = (event: Partial<Event>, semester: number) => {
         appendZero(medcal_id) // Captures and selects the number after F
       );
     }else{
-	console.log("ERROR parsing medcal_id on "+title;
+	console.log("ERROR parsing medcal_id on "+title);
 	return null;
     }
   } else {
